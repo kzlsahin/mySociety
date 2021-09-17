@@ -1,0 +1,104 @@
+[
+    {
+    "fileName" : "grass1.png",
+    "offset" : [0, 30]
+    },
+
+    {
+    "fileName" : "grass2.png",
+    "offset" : [0, 30]
+    },
+
+    {
+    "fileName" : "grass3.png",
+    "offset" : [0, 30]
+    },
+
+    {
+    "fileName" : "grass4.png",
+    "offset" : [0, 44]
+    },
+
+    {
+    "fileName" : "grassMurat.png",
+    "offset" : [0, 30]
+    },
+
+    {
+    "fileName" : "woods.png",
+    "offset" : [0, 69]
+    },
+
+    {
+    "fileName" : "woods1.png",
+    "offset" : [0, 71]
+    },
+
+    {
+    "fileName" : "tower.png",
+    "offset" : [14, 118]
+    },
+
+    {
+    "fileName" : "farm.png",
+    "offset" : [17, 73]
+    },
+
+    {
+    "fileName" : "residentSite.png",
+    "offset" : [0, 30]
+    },
+
+    {
+    "fileName" : "tent.png",
+    "offset" : [0, 39]
+    },
+
+    {
+    "fileName" : "home0.png",
+    "offset" : [0, 65]
+    },
+
+    {
+    "fileName" : "house.gif",
+    "offset" : [17, 73]
+    },
+
+    {
+    "fileName" : "park.png",
+    "offset" : [17, 73]
+    },
+
+    {
+    "fileName" : "road.png",
+    "offset" : [0, 30]
+    },
+    {
+    "fileName" : "path0.png",
+    "offset" : [0, 30]
+    },
+    {
+    "fileName" : "path1.png",
+    "offset" : [0, 30]
+    },
+    {
+    "fileName" : "path2.png",
+    "offset" : [0, 30]
+    },
+    {
+    "fileName" : "path3.png",
+    "offset" : [0, 30]
+    },
+    {
+    "fileName" : "path4.png",
+    "offset" : [0, 30]
+    },
+    {
+    "fileName" : "primitiveRoad.png",
+    "offset" : [0, 30]
+    },
+    {
+    "fileName" : "farmLand0.png",
+    "offset" : [0, 30]
+    },
+]

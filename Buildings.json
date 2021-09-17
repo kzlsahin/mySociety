@@ -1,0 +1,58 @@
+[
+
+{
+id = grass_0;
+name = "grass";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = None;
+imageFile = "images/grass.png";
+ref = "roadImg"
+    },
+
+{
+id = home_0;
+name = "small home";
+parcel = "1x1";
+followMouse = false;
+constructionEffort = 50;
+imageFile = "images/home.png";
+ref = "homeImg"
+    },
+
+{
+id = road_1;
+name = "road";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/road.png";
+ref = "roadImg"
+    },
+
+{
+id = park_0;
+name = "park";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/park.png";
+ref = "parkImg"
+    },
+
+{
+name = "house";
+parcel = "2x2";
+followMouse = false;
+constructionEffort = 60;
+imageFile = "images/house.gif";
+    },
+
+{
+name = "farm";
+parcel = "2x3";
+followMouse = false;
+constructionEffort = 60;
+imageFile = "images/farm.png";
+    },
+]

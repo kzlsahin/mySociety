@@ -1,0 +1,56 @@
+[
+
+{
+name = "home0.png";
+parcel = "1x1";
+followMouse = false;
+constructionEffort = 50;
+imageFile = "images/home0.png";
+ref = "homeImg"
+    },
+
+{
+name = "tent.png";
+parcel = "1x1";
+followMouse = false;
+constructionEffort = 50;
+imageFile = "images/tent.png";
+ref = "tentImg"
+    },
+
+
+
+{
+name = "park.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/park.png";
+ref = "parkImg"
+    },
+
+{
+name = "house.gif";
+parcel = "2x2";
+followMouse = false;
+constructionEffort = 60;
+imageFile = "images/house.gif";
+    },
+
+{
+name = "tower.png";
+parcel = "1x1";
+followMouse = false;
+constructionEffort = 60;
+imageFile = "images/tower.png";
+    },
+
+{
+name = "farm.png";
+parcel = "2x3";
+followMouse = false;
+constructionEffort = 60;
+imageFile = "images/farm.png";
+    },
+
+]

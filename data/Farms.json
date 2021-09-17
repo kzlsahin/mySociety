@@ -1,0 +1,10 @@
+[
+
+{
+name = "farmLand0.png";
+parcel = "1x1";
+followMouse = false;
+constructionEffort = 60;
+imageFile = "images/farmLand0.png";
+    },
+]

@@ -1,0 +1,67 @@
+[
+
+{
+name = "road.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/road.png";
+ref = "roadImg"
+    },
+
+{
+name = "path0.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/road0.png";
+ref = "roadImg"
+    },
+
+{
+name = "path1.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/road01.png";
+ref = "roadImg"
+    },
+
+{
+name = "path2.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/road2.png";
+ref = "roadImg"
+    },
+
+{
+name = "path3.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/road3.png";
+ref = "roadImg"
+    },
+
+{
+name = "path4.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/road4.png";
+ref = "roadImg"
+    },
+
+{
+name = "primitiveRoad.png";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = 30;
+imageFile = "images/primitiveRoad.png";
+ref = "roadImg"
+    },
+
+
+]

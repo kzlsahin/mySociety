@@ -1,0 +1,12 @@
+[
+
+{
+id = "grass_0";
+name = "grass";
+parcel = "1x1";
+followMouse = true;
+constructionEffort = None;
+imageFile = "images/grass.png";
+ref = "roadImg"
+    },
+]

@@ -1,0 +1,48 @@
+[
+
+{
+name = "legionary";
+parcel = 1;
+followMouse = true;
+constructionEffort = None;
+imageFile = "road.png";
+ref = "roadImg"
+    },
+
+{
+name = "cavalry";
+parcel = 1;
+followMouse = false;
+constructionEffort = 50;
+imageFile = "home.png";
+ref = "homeImg"
+    },
+
+{
+name = "scout";
+parcel = 1;
+followMouse = true;
+constructionEffort = 30;
+imageFile = "road.png";
+ref = "roadImg"
+    },
+
+{
+name = "axillary";
+parcel = 1;
+followMouse = true;
+constructionEffort = 30;
+imageFile = "park.png";
+ref = "parkImg"
+    },
+
+{
+name = "kasap";
+parcel = 1;
+followMouse = true;
+constructionEffort = 30;
+imageFile = "park.png";
+ref = "parkImg"
+    },
+
+]

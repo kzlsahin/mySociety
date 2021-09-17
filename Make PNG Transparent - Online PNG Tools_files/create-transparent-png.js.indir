@@ -1,0 +1,165 @@
+window.bridges["create-transparent-png"] = function(){
+    var input = {
+        data: null,
+        preview: null
+    }
+    var output = {
+        data: null,
+        preview: null
+    }
+    var bridge = function() {
+        var tool = this;
+        var options = this.options.get();
+        if (!input.data) {
+            input.data = tool.input.element.querySelector(".data");
+            input.preview = tool.input.element.querySelector(".preview");
+            output.data = tool.output.element.querySelector(".data");
+            output.preview = tool.output.element.querySelector(".preview");
+        }
+
+        var empty = tool.input.element.querySelector(".side-box").classList.contains("empty");
+        if (empty) {
+            return;
+        }
+
+        if (input.preview.width != input.preview.clientWidth) {
+            input.preview.width = input.preview.clientWidth;
+            input.preview.height = input.preview.clientHeight;
+            output.preview.width = output.preview.clientWidth;
+            output.preview.height = output.preview.clientHeight;
+        }
+        
+        // Preview the input image
+        var fit = best_image_fit(input.data.width, input.data.height, input.preview.width, input.preview.height);
+        var inputPreviewCtx = input.preview.getContext("2d");
+        inputPreviewCtx.clearRect(0, 0, input.preview.width, input.preview.height);
+        inputPreviewCtx.drawImage(input.data, fit.offsetX, fit.offsetY, fit.width, fit.height);
+
+        // Draw imported image on the output canvas
+        //
+        output.data.width = input.data.width;
+        output.data.height = input.data.height;
+        output.data.getContext("2d").drawImage(input.data, 0, 0);
+
+        var transparencyColor = options.color;
+        var transparencyThreshold = parseInt(options['threshold']);
+        var transparencyMask = options['mask'];
+
+        if (transparencyColor && !isColorValid(transparencyColor)) {
+            tool.output.showWarningBadge("Invalid transparency color", "\"" + transparencyThreshold + "\" is not a color, no colors will be replaced.", -1);
+            transparencyEnabled = false;
+        }
+        if (isNaN(transparencyThreshold)) {
+            tool.output.showNegativeBadge("Invalid transparency threshold", "\"" + transparencyThreshold + "\" is not a percentage.", -1);
+            return;
+        }
+        if (transparencyThreshold < 0) {
+            transparencyThreshold = 0;
+            tool.output.showWarningBadge("Invalid transparency threshold percentage", "\"" + transparencyThreshold + "\" is less than 0, assuming 0.", -1);
+        }
+        if (transparencyThreshold > 100) {
+            transparencyThreshold = 100;
+            tool.output.showWarningBadge("Invalid transparency threshold percentage", "\"" + transparencyThreshold + "\" is more than 100, assuming 100.", -1);
+        }
+
+        var pixels = output.data.getContext("2d").getImageData(0, 0, output.data.width, output.data.height);
+
+        if (transparencyColor) {
+            transparencyColor = colorToRGBA(transparencyColor);
+            for (var i = 0; i < pixels.data.length; i += 4) {
+                var color = {
+                    r: pixels.data[i+0],
+                    g: pixels.data[i+1],
+                    b: pixels.data[i+2],
+                    a: pixels.data[i+3]
+                }
+                
+                var delta = rgbaDifference(color, transparencyColor);
+                
+                if (delta < transparencyThreshold) {
+                    pixels.data[i+0] = 0;
+                    pixels.data[i+1] = 0;
+                    pixels.data[i+2] = 0;
+                    pixels.data[i+3] = 0;
+                }
+            }
+        }
+
+        output.data.getContext("2d").putImageData(pixels, 0, 0);
+        tool.respond();
+        
+        var fit = best_image_fit(output.data.width, output.data.height, output.preview.width, output.preview.height);
+        fillTransparencyEffect(output.preview);
+
+        if (transparencyMask) {
+            var ctx = output.preview.getContext("2d");
+            ctx.fillStyle = "white";
+            ctx.fillRect(fit.offsetX, fit.offsetY, fit.width, fit.height);
+
+            var mask = document.createElement("canvas");
+            mask.width = output.data.width;
+            mask.height = output.data.height;
+            for (var i = 0; i < pixels.data.length; i += 4) {
+                var p = pixels.data;
+                var result = p[i+0] + p[i+1] + p[i+2] + p[i+3];
+                if (result == 0) {
+                    pixels.data[i+0] = 0;
+                    pixels.data[i+1] = 0;
+                    pixels.data[i+2] = 0;
+                    pixels.data[i+3] = 255;
+                }
+                else {
+                    pixels.data[i+0] = 0;
+                    pixels.data[i+1] = 0;
+                    pixels.data[i+2] = 0;
+                    pixels.data[i+3] = 0;
+                }
+            }
+            mask.getContext("2d").putImageData(pixels, 0, 0);
+            ctx.drawImage(mask, fit.offsetX, fit.offsetY, fit.width, fit.height);
+            mask = null;
+        }
+        else {
+            output.preview.getContext("2d").drawImage(output.data, fit.offsetX, fit.offsetY, fit.width, fit.height);
+        }
+    }
+
+    
+
+
+    function fillTransparencyEffect(canvas) {
+        var ctx = canvas.getContext("2d");
+        var w = canvas.width;
+        var h = canvas.height;
+        var size = 15;
+        var odd  = true;
+        for (var i = 0; i <= w; i += size) {
+            for (var j = 0; j <= h; j += size) {
+
+                if (odd) ctx.fillStyle = "#ffffff";
+                else ctx.fillStyle = "#efefef";
+
+                odd = !odd;
+                ctx.fillRect(i, j, i+size, j+size);
+            }
+        }
+    }
+
+    return {
+        converter: bridge,
+        config: {
+            type: "image",
+            input: {
+                import: "base64",
+                noClipboard: true,
+                download: "png",
+                image: true
+            },
+            output: {
+                download: "png",
+                noClipboard: true
+            }
+        }
+    }
+
+}
